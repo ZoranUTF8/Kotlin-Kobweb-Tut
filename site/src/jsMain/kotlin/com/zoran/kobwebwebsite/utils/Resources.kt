@@ -27,7 +27,7 @@ object Resources {
 
     object UserInfo {
         const val NAME = "Zojima"
-        const val PROFESSION = "Debugging my way through life, one line of code at a time. If laughter is the best medicine, my code is a prescription for happiness (and occasional head-scratching)"
+        const val PROFESSION = "Typing code that sometimes works"
         const val ABOUT_ME =
             "Lorem ipsum dolor sit amet, nisl tempus lorem adipiscing elit. Donec sollicitudin blandit tellus, ac sagittis ligula egestas consequat. Lorem ipsum dolor sit amet."
         const val BUTTON_TEXT = "Get in touch"
@@ -47,14 +47,14 @@ object Resources {
 
 
     object Icon {
-        const val EMAIL_LIGHT = "FaSun()"
-        const val EMAIL_DARK = "mail_light.svg"
+        const val EMAIL_LIGHT = "github.svg"
+        const val EMAIL_DARK = "github.svg"
         const val GITHUB = "github.svg"
-        const val GITHUB_LIGHT = "github_light.svg"
-        const val INSTAGRAM = "instagram.svg"
-        const val INSTAGRAM_LIGHT = "instagram_light.svg"
-        const val GITLAB = "gitlab.svg"
-        const val GITLAB_LIGHT = "gitlab_light.svg"
+        const val GITHUB_LIGHT = "github.svg"
+        const val INSTAGRAM = "github.svg"
+        const val INSTAGRAM_LIGHT = "github.svg"
+        const val GITLAB = "github.svg"
+        const val GITLAB_LIGHT = "github.svg"
         const val SUN = "sun.svg"
         const val MOON = "moon.svg"
     }

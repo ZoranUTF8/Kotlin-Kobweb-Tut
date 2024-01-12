@@ -6,6 +6,7 @@ import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
@@ -18,6 +19,9 @@ import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.zoran.kobwebwebsite.CustomStyles.SocialIconStyle
+import com.zoran.kobwebwebsite.components.AppIcons.IconButton
+import com.zoran.kobwebwebsite.utils.CustomClasses.SocialIcon
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
@@ -89,10 +93,6 @@ fun ProfileLeft(
             size = ButtonSize.LG,
             onClick = { window.location.href = Resources.UserInfo.MY_EMAIL }
         ) {
-//            Image(
-//                modifier = Modifier.margin(right = 12.px),
-//                src =
-//            )
             FaSun(
                 Modifier
                     .margin(right = 12.px)
@@ -108,6 +108,23 @@ fun ProfileLeft(
                     .fontFamily(Resources.UserInfo.ROBOTO_REGULAR),
                 text = Resources.UserInfo.BUTTON_TEXT
             )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .gap(12.px),
+            horizontalArrangement = if (breakPoint <= Breakpoint.SM)
+                Arrangement.Center else Arrangement.Start
+        ) {
+            SocialIcon.entries.filter {
+                !it.name.contains("Light")
+            }.forEach {
+                IconButton(
+                    modifier = SocialIconStyle.toModifier(),
+                    icon = it.icon,
+                    link = it.link
+                )
+            }
         }
     }
 }
