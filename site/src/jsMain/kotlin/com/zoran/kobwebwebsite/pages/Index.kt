@@ -1,33 +1,33 @@
 package com.zoran.kobwebwebsite.pages
 
-import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import Resources
+import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.functions.LinearGradient
+import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.silk.components.icons.fa.FaFaceSmile
-import com.varabyte.kobweb.silk.components.icons.fa.IconSize
-import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
-import org.jetbrains.compose.web.dom.Text
+import com.zoran.kobwebwebsite.components.Profile.ProfileCard
 
 @Page
 @Composable
 fun HomePage() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        Modifier
+            .fillMaxSize()
+            .backgroundImage(
+                linearGradient(
+                    dir = LinearGradient.Direction.ToRight,
+                    from = Resources.Theme.GRADIENT_ONE.color,
+                    to = Resources.Theme.GRADIENT_TWO.color
+                )
+            ),
+        contentAlignment = Alignment.Center
     ) {
-
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            FaFaceSmile(modifier = Modifier.margin(), style = IconStyle.FILLED, size = IconSize.XXL)
-        }
-
+        ProfileCard()
     }
 
 }
