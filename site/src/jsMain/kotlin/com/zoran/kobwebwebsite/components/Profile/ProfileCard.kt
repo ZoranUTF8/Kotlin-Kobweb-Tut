@@ -10,12 +10,13 @@ import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 
 @Composable
-fun ProfileCard() {
+fun ProfileCard(colorMode: ColorMode) {
 
     val breakPoint = rememberBreakpoint()
 
@@ -37,9 +38,12 @@ fun ProfileCard() {
             )
             .padding(all = 12.px)
             .borderRadius(r = Resources.Dimens.BORDER_RADIUS.px)
-            .background(Colors.White)
+            .background(
+                if (colorMode.isLight) Colors.White else
+                    Resources.Theme.DARK_BLUE.color
+            )
     ) {
-        ProfileLeft(breakPoint = breakPoint)
+        ProfileLeft(colorMode = colorMode, breakPoint = breakPoint)
         ProfileRight(breakPoint = breakPoint)
     }
 

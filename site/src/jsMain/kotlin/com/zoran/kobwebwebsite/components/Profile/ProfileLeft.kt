@@ -19,16 +19,17 @@ import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.zoran.kobwebwebsite.CustomStyles.SocialIconStyle
 import com.zoran.kobwebwebsite.components.AppIcons.IconButton
 import com.zoran.kobwebwebsite.utils.CustomClasses.SocialIcon
 import kotlinx.browser.window
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @Composable
 fun ProfileLeft(
+    colorMode: ColorMode,
     breakPoint: Breakpoint
 ) {
     Column(
@@ -44,7 +45,7 @@ fun ProfileLeft(
             modifier = Modifier
                 .margin(bottom = 12.px)
                 .fontFamily(Resources.UserInfo.ROBOTO_BOLD)
-                .color(Colors.Black)
+                .color(if (colorMode.isLight) Colors.Black else Colors.White)
                 .fontSize(50.px)
                 .fontWeight(FontWeight.Bold)
                 .textAlign(
@@ -57,7 +58,7 @@ fun ProfileLeft(
             modifier = Modifier
                 .margin(bottom = 24.px)
                 .fontFamily(Resources.UserInfo.ROBOTO_BOLD)
-                .color(Colors.Black)
+                .color(if (colorMode.isLight) Colors.Black else Colors.White)
                 .fontSize(18.px)
         )
         Surface(
@@ -77,7 +78,7 @@ fun ProfileLeft(
             modifier = Modifier
                 .fontFamily(Resources.UserInfo.ROBOTO_REGULAR)
                 .fontSize(14.px)
-                .color(Colors.Black)
+                .color(if (colorMode.isLight) Colors.Black else Colors.White)
                 .opacity(50.percent)
                 .lineHeight(2)
                 .margin(bottom = 36.px)
@@ -96,13 +97,13 @@ fun ProfileLeft(
             FaSun(
                 Modifier
                     .margin(right = 12.px)
-                    .color(Colors.Aqua)
+                    .color(if (colorMode.isLight) Colors.Black else Colors.White)
             )
             SpanText(
                 modifier = Modifier
                     .fontSize(14.px)
                     .color(
-                        Color.white
+                        if (colorMode.isLight) Colors.White else Resources.Theme.GRADIENT_ONE.color
                     )
                     .fontWeight(FontWeight.Bold)
                     .fontFamily(Resources.UserInfo.ROBOTO_REGULAR),
@@ -117,10 +118,12 @@ fun ProfileLeft(
                 Arrangement.Center else Arrangement.Start
         ) {
             SocialIcon.entries.filter {
-                !it.name.contains("Light")
+                if (colorMode.isLight) !it.name.contains("Light")
+                else it.name.contains("Light")
             }.forEach {
                 IconButton(
                     modifier = SocialIconStyle.toModifier(),
+                    colorMode = colorMode,
                     icon = it.icon,
                     link = it.link
                 )

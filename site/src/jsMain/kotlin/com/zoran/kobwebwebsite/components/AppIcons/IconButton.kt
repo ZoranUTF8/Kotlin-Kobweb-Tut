@@ -8,6 +8,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.CSSSizeValue
 import org.jetbrains.compose.web.css.CSSUnit
 import org.jetbrains.compose.web.css.LineStyle
@@ -17,6 +18,7 @@ import org.jetbrains.compose.web.css.px
 @Composable
 fun IconButton(
     modifier: Modifier = Modifier,
+    colorMode: ColorMode,
     link: String = "",
     icon: String,
     iconSize: CSSSizeValue<CSSUnit.px> = Resources.Dimens.ICON_SIZE.px,
